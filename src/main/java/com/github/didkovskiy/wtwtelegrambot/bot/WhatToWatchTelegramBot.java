@@ -13,6 +13,7 @@ public class WhatToWatchTelegramBot extends TelegramLongPollingBot {
     @Value("${bot.username}")
     private String username;
 
+    //1943863243:AAHgxtZofG6A6aU5cAQldM7WtGvAT8PjUgs
     @Value("${bot.token}")
     private String token;
 
