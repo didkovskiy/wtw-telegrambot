@@ -2,5 +2,9 @@
 
 ## 0.1.0-SNAPSHOT
 
-* added Spring Boot skeleton project
-* added telegram bot 
+* Added Spring Boot skeleton project.
+* Added telegram bot. 
+
+## 0.2.0-SNAPSHOT
+
+* Implemented Command pattern for project. Command Container was created.
