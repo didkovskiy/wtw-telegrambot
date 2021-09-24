@@ -2,6 +2,7 @@ package com.github.didkovskiy.wtwtelegrambot.bot;
 
 import com.github.didkovskiy.wtwtelegrambot.command.CommandContainer;
 import com.github.didkovskiy.wtwtelegrambot.service.SendBotMessageServiceImpl;
+import com.github.didkovskiy.wtwtelegrambot.service.TelegramUserService;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import org.telegram.telegrambots.bots.TelegramLongPollingBot;
@@ -25,8 +26,8 @@ public class WhatToWatchTelegramBot extends TelegramLongPollingBot {
 
     private final CommandContainer commandContainer;
 
-    public WhatToWatchTelegramBot() {
-        this.commandContainer = new CommandContainer(new SendBotMessageServiceImpl(this));
+    public WhatToWatchTelegramBot(TelegramUserService telegramUserService) {
+        this.commandContainer = new CommandContainer(new SendBotMessageServiceImpl(this), telegramUserService);
     }
 
     @Override
