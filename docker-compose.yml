@@ -1,10 +1,26 @@
 version: '3.1'
 
 services:
-  jrtb:
+  wtwtb-bot:
+    depends_on:
+      - wtwtb-db
     build:
       context: .
     environment:
-      - BOT_NAME=${BOT_NAME}
-      - BOT_TOKEN=${BOT_TOKEN}
+      BOT_NAME: ${BOT_NAME}
+      BOT_TOKEN: ${BOT_TOKEN}
+      BOT_DB_USERNAME: ${BOT_DB_USERNAME}
+      BOT_DB_PASSWORD: ${BOT_DB_PASSWORD}
     restart: always
+  wtwtb-db:
+    image: mysql:5.7
+    restart: always
+    environment:
+      MYSQL_USER: ${BOT_DB_USERNAME}
+      MYSQL_PASSWORD: ${BOT_DB_PASSWORD}
+      MYSQL_DATABASE: 'wtwtb_db'
+      MYSQL_ROOT_PASSWORD: 'root'
+    ports:
+      - '3306:3306'
+    expose:
+      - '3306'

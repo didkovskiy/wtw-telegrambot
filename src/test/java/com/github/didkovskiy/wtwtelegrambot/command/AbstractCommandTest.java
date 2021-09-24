@@ -3,6 +3,7 @@ package com.github.didkovskiy.wtwtelegrambot.command;
 import com.github.didkovskiy.wtwtelegrambot.bot.WhatToWatchTelegramBot;
 import com.github.didkovskiy.wtwtelegrambot.service.SendBotMessageService;
 import com.github.didkovskiy.wtwtelegrambot.service.SendBotMessageServiceImpl;
+import com.github.didkovskiy.wtwtelegrambot.service.TelegramUserService;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
@@ -17,6 +18,7 @@ abstract class AbstractCommandTest {
 
     protected WhatToWatchTelegramBot wtwtelegrambot = Mockito.mock(WhatToWatchTelegramBot.class);
     protected SendBotMessageService sendBotMessageService = new SendBotMessageServiceImpl(wtwtelegrambot);
+    protected TelegramUserService telegramUserService = Mockito.mock(TelegramUserService.class);
 
     abstract String getCommandName();
 

@@ -1,5 +1,9 @@
 # Release Notes
 
+## 0.4.0-SNAPSHOT
+
+* Added repository layer.
+
 ## 0.3.0-SNAPSHOT
 
 * Added deployment process to the project.

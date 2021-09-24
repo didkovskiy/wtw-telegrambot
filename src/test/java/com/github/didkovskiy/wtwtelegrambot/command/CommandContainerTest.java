@@ -1,6 +1,7 @@
 package com.github.didkovskiy.wtwtelegrambot.command;
 
 import com.github.didkovskiy.wtwtelegrambot.service.SendBotMessageService;
+import com.github.didkovskiy.wtwtelegrambot.service.TelegramUserService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -18,7 +19,8 @@ class CommandContainerTest {
     @BeforeEach
     public void init() {
         SendBotMessageService sendBotMessageService = Mockito.mock(SendBotMessageService.class);
-        commandContainer = new CommandContainer(sendBotMessageService);
+        TelegramUserService telegramUserService = Mockito.mock(TelegramUserService.class);
+        commandContainer = new CommandContainer(sendBotMessageService, telegramUserService);
     }
 
     @Test
