@@ -22,10 +22,14 @@ public class StopCommand implements Command {
     @Override
     public void execute(Update update) {
         sendBotMessageService.sendMessage(update.getMessage().getChatId().toString(), STOP_MESSAGE);
+        deactivateUser(update);
+    }
+
+    private void deactivateUser(Update update){
         telegramUserService.findByChatId(update.getMessage().getChatId().toString())
-                .ifPresent(it -> {
-                    it.setActive(false);
-                    telegramUserService.save(it);
+                .ifPresent(user -> {
+                    user.setActive(false);
+                    telegramUserService.save(user);
                 });
     }
 }

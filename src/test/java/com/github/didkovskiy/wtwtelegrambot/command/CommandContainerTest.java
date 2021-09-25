@@ -30,18 +30,21 @@ class CommandContainerTest {
         String startCommandName = "/start";
         String stopCommandName  = "/stop";
         String noCommandName    = "/nocommand";
+        String statCommandName  = "/stat";
 
         //when
         Command helpCommand  = commandContainer.retrieveCommand(helpCommandName);
         Command startCommand = commandContainer.retrieveCommand(startCommandName);
         Command stopCommand  = commandContainer.retrieveCommand(stopCommandName);
         Command noCommand    = commandContainer.retrieveCommand(noCommandName);
+        Command statCommand  = commandContainer.retrieveCommand(statCommandName);
 
         //then
         assertEquals(HelpCommand.class,  helpCommand.getClass());
         assertEquals(StartCommand.class, startCommand.getClass());
         assertEquals(StopCommand.class,  stopCommand.getClass());
         assertEquals(NoCommand.class,    noCommand.getClass());
+        assertEquals(StatCommand.class,  statCommand.getClass());
     }
 
     @Test

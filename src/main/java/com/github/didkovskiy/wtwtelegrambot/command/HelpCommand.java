@@ -17,8 +17,8 @@ public class HelpCommand implements Command {
                     + "<b>Start\\stop working with bot:</b>\n"
                     + "%s - start working with me ✅\n"
                     + "%s - stop working with me \uD83D\uDED1\n\n"
-                    + "%s - get statistic \n"
-                    + "%s - get help working with me \uD83D\uDC4B\n",
+                    + "%s - get statistic about active users\n"
+                    + "%s - get help about working with me \uD83D\uDC4B\n",
             START.getCommandName(), STOP.getCommandName(), STAT.getCommandName(), HELP.getCommandName());
 
     public HelpCommand(SendBotMessageService sendBotMessageService) {
