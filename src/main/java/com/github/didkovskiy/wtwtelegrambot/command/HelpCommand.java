@@ -17,7 +17,15 @@ public class HelpCommand implements Command {
                     + "<b>Start\\stop working with bot:</b>\n"
                     + "%s - start working with me ✅\n"
                     + "%s - stop working with me \uD83D\uDED1\n\n"
-                    + "%s - get statistic about active users\n"
+
+
+                    + "<b>WatchLater list access:</b>\n"
+                    + "%s + 'movie title' - save movie to the WatchLater list\n"
+                    + "%s - see WatchLater list ⌚️\n\n"
+
+                    + "%s - get statistic about active users \uD83E\uDDFE\n"
+
+
                     + "%s - get help about working with me \uD83D\uDC4B\n",
             START.getCommandName(), STOP.getCommandName(), STAT.getCommandName(), HELP.getCommandName());
 
