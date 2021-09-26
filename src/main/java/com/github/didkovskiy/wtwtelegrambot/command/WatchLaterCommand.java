@@ -44,6 +44,10 @@ public class WatchLaterCommand implements Command {
         }
         String watchLaterMovieTitle = Arrays.stream(getMessage(update).split(SPACE)).skip(1).collect(Collectors.joining(" "));
         String chatId = getChatId(update);
+        if(watchLaterMovieTitle.contains("/")){
+            sendMovieNotFoundMessage(chatId, watchLaterMovieTitle);
+            return;
+        }
         SearchResult searchResult = imDbMovieClient.getFirstSearchResult(watchLaterMovieTitle);
         if (isNull(searchResult)) {
             sendMovieNotFoundMessage(chatId, watchLaterMovieTitle);
