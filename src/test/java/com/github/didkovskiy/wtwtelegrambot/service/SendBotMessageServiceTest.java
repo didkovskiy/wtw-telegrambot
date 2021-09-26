@@ -1,7 +1,6 @@
 package com.github.didkovskiy.wtwtelegrambot.service;
 
 import com.github.didkovskiy.wtwtelegrambot.bot.WhatToWatchTelegramBot;
-import com.github.didkovskiy.wtwtelegrambot.service.impl.SendBotMessageServiceImpl;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

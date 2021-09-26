@@ -1,10 +1,5 @@
 # Release Notes
 
-## 0.5.0-SNAPSHOT
-
-* Added ability to save movies to the 'Watch Later' list.
-* Added ability to get 'Watch Later' list.
-
 ## 0.4.0-SNAPSHOT
 
 * Added repository layer.
