@@ -1,7 +1,9 @@
 package com.github.didkovskiy.wtwtelegrambot.command;
 
+import com.github.didkovskiy.wtwtelegrambot.client.IMDbMovieClient;
 import com.github.didkovskiy.wtwtelegrambot.service.SendBotMessageService;
 import com.github.didkovskiy.wtwtelegrambot.service.TelegramUserService;
+import com.github.didkovskiy.wtwtelegrambot.service.WatchLaterService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -20,7 +22,9 @@ class CommandContainerTest {
     public void init() {
         SendBotMessageService sendBotMessageService = Mockito.mock(SendBotMessageService.class);
         TelegramUserService telegramUserService = Mockito.mock(TelegramUserService.class);
-        commandContainer = new CommandContainer(sendBotMessageService, telegramUserService);
+        WatchLaterService watchLaterService = Mockito.mock(WatchLaterService.class);
+        IMDbMovieClient imDbMovieClient = Mockito.mock(IMDbMovieClient.class);
+        commandContainer = new CommandContainer(sendBotMessageService, telegramUserService, watchLaterService, imDbMovieClient);
     }
 
     @Test
