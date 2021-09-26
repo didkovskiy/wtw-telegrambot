@@ -34,21 +34,31 @@ class WatchLaterCommandTest {
         //given
         String chatId = "1";
         String movieTitle = "fgweyug78diwed24r";
+        String movieTitleWithSlash = "/movie/";
 
-        Update update = new Update();
-        Message message = Mockito.mock(Message.class);
-        Mockito.when(message.getChatId()).thenReturn(Long.valueOf(chatId));
-        Mockito.when(message.getText()).thenReturn("/watchlater " + movieTitle);
-        update.setMessage(message);
+        Update update1 = new Update();
+        Message message1 = Mockito.mock(Message.class);
+        Mockito.when(message1.getChatId()).thenReturn(Long.valueOf(chatId));
+        Mockito.when(message1.getText()).thenReturn("/watchlater " + movieTitle);
+        update1.setMessage(message1);
+
+        Update update2 = new Update();
+        Message message2 = Mockito.mock(Message.class);
+        Mockito.when(message2.getChatId()).thenReturn(Long.valueOf(chatId));
+        Mockito.when(message2.getText()).thenReturn("/watchlater " + movieTitleWithSlash);
+        update2.setMessage(message2);
 
         Mockito.when(imDbMovieClient.getFirstSearchResult(movieTitle)).thenReturn(null);
 
         String movieNotFoundMessage = String.format("I didn't find a movie with a title <b>%s</b>", movieTitle);
+        String movieNotFoundMessageForSlash = String.format("I didn't find a movie with a title <b>%s</b>", movieTitleWithSlash);
 
         //when
-        watchLaterCommand.execute(update);
+        watchLaterCommand.execute(update1);
+        watchLaterCommand.execute(update2);
 
         //then
         Mockito.verify(sendBotMessageService).sendMessage(chatId, movieNotFoundMessage);
+        Mockito.verify(sendBotMessageService).sendMessage(chatId, movieNotFoundMessageForSlash);
     }
 }
