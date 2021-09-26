@@ -1,7 +1,6 @@
-package com.github.didkovskiy.wtwtelegrambot.service.impl;
+package com.github.didkovskiy.wtwtelegrambot.service;
 
 import com.github.didkovskiy.wtwtelegrambot.bot.WhatToWatchTelegramBot;
-import com.github.didkovskiy.wtwtelegrambot.service.SendBotMessageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
