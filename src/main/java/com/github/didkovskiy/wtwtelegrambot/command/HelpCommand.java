@@ -22,7 +22,7 @@ public class HelpCommand implements Command {
                     + "%s + 'movie title' - save movie to the WatchLater list\n"
                     + "%s - see WatchLater list ⌚️\n\n"
 
-                    + "%s - get statistic about active users\n"
+                    + "%s - get statistic about active users \uD83E\uDDFE\n"
                     + "%s - get help about working with me \uD83D\uDC4B\n",
             START.getCommandName(),
             STOP.getCommandName(),
