@@ -6,7 +6,8 @@
         <setting name="validation-enabled" value="true" />
         <setting name="provider-name" value="Hibernate" />
         <datasource-mapping>
-          <factory-entry name="entityManagerFactory" value="84e3e77f-d95b-4bbd-8ca4-c846f57ae532" />
+          <factory-entry name="entityManagerFactory" value="7018d1e0-ccd7-4991-8952-2de0309c0507" />
+          <factory-entry name="wtw-telegrambot" value="0a8dfd33-5086-4677-9c2b-2239275b110c" />
         </datasource-mapping>
         <naming-strategy-map />
       </configuration>
@@ -78,10 +79,6 @@
     <orderEntry type="library" name="Maven: org.glassfish.jersey.core:jersey-client:2.33" level="project" />
     <orderEntry type="library" name="Maven: jakarta.validation:jakarta.validation-api:2.0.2" level="project" />
     <orderEntry type="library" name="Maven: org.json:json:20180813" level="project" />
-    <orderEntry type="library" name="Maven: org.apache.httpcomponents:httpclient:4.5.13" level="project" />
-    <orderEntry type="library" name="Maven: org.apache.httpcomponents:httpcore:4.4.14" level="project" />
-    <orderEntry type="library" name="Maven: commons-codec:commons-codec:1.15" level="project" />
-    <orderEntry type="library" name="Maven: org.apache.httpcomponents:httpmime:4.5.13" level="project" />
     <orderEntry type="library" name="Maven: commons-io:commons-io:2.8.0" level="project" />
     <orderEntry type="library" name="Maven: org.slf4j:slf4j-api:1.7.32" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: org.springframework.boot:spring-boot-starter-test:2.5.4" level="project" />
@@ -143,5 +140,14 @@
     <orderEntry type="library" name="Maven: org.springframework:spring-beans:5.3.9" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-aspects:5.3.9" level="project" />
     <orderEntry type="library" name="Maven: org.projectlombok:lombok:1.18.20" level="project" />
+    <orderEntry type="library" name="Maven: com.konghq:unirest-java:3.13.0" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.httpcomponents:httpclient:4.5.13" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.httpcomponents:httpcore:4.4.14" level="project" />
+    <orderEntry type="library" name="Maven: commons-codec:commons-codec:1.15" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.httpcomponents:httpmime:4.5.13" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.httpcomponents:httpcore-nio:4.4.14" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.httpcomponents:httpasyncclient:4.1.4" level="project" />
+    <orderEntry type="library" name="Maven: com.google.code.gson:gson:2.8.7" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.commons:commons-lang3:3.12.0" level="project" />
   </component>
 </module>

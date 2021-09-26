@@ -1,7 +1,7 @@
 FROM adoptopenjdk/openjdk11:ubi
 ARG JAR_FILE=target/*.jar
 ENV BOT_NAME=wtw_imdb_bot
-ENV BOT_TOKEN=111
+ENV BOT_TOKEN=bot_token
 ENV BOT_DB_USERNAME=wtwtb_db_user
 ENV BOT_DB_PASSWORD=wtwtb_db_password
 COPY ${JAR_FILE} app.jar

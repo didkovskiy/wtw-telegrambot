@@ -24,11 +24,11 @@ public class StartCommand implements Command {
     @Override
     public void execute(Update update) {
         String chatId = update.getMessage().getChatId().toString();
-        registerUser(chatId);
+        activateUser(chatId);
         sendBotMessageService.sendMessage(chatId, START_MESSAGE);
     }
 
-    private void registerUser(String chatId){
+    private void activateUser(String chatId) {
         telegramUserService.findByChatId(chatId).ifPresentOrElse(
                 user -> {
                     user.setActive(true);
