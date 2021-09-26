@@ -1,7 +1,8 @@
-package com.github.didkovskiy.wtwtelegrambot.service;
+package com.github.didkovskiy.wtwtelegrambot.service.impl;
 
 import com.github.didkovskiy.wtwtelegrambot.repository.TelegramUserRepository;
 import com.github.didkovskiy.wtwtelegrambot.repository.entity.TelegramUser;
+import com.github.didkovskiy.wtwtelegrambot.service.TelegramUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

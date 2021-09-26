@@ -1,7 +1,9 @@
 package com.github.didkovskiy.wtwtelegrambot.command;
 
+import com.github.didkovskiy.wtwtelegrambot.client.IMDbMovieClient;
 import com.github.didkovskiy.wtwtelegrambot.service.SendBotMessageService;
 import com.github.didkovskiy.wtwtelegrambot.service.TelegramUserService;
+import com.github.didkovskiy.wtwtelegrambot.service.WatchLaterService;
 import com.google.common.collect.ImmutableMap;
 
 import static com.github.didkovskiy.wtwtelegrambot.command.CommandName.*;
@@ -14,7 +16,8 @@ public class CommandContainer {
     private final ImmutableMap<String, Command> commandMap;
     private final Command unknownCommand;
 
-    public CommandContainer(SendBotMessageService sendBotMessageService, TelegramUserService telegramUserService) {
+    public CommandContainer(SendBotMessageService sendBotMessageService, TelegramUserService telegramUserService,
+                            WatchLaterService watchLaterService, IMDbMovieClient imDbMovieClient) {
 
         commandMap = ImmutableMap.<String, Command>builder()
                 .put(START.getCommandName(), new StartCommand(sendBotMessageService, telegramUserService))
@@ -22,6 +25,7 @@ public class CommandContainer {
                 .put(HELP.getCommandName(), new HelpCommand(sendBotMessageService))
                 .put(NO.getCommandName(), new NoCommand(sendBotMessageService))
                 .put(STAT.getCommandName(), new StatCommand(sendBotMessageService, telegramUserService))
+                .put(WATCH_LATER.getCommandName(), new WatchLaterCommand(sendBotMessageService, watchLaterService, imDbMovieClient, telegramUserService))
                 .build();
 
         unknownCommand = new UnknownCommand(sendBotMessageService);

@@ -9,7 +9,8 @@ public enum CommandName {
     STOP("/stop"),
     HELP("/help"),
     NO("/nocommand"),
-    STAT("/stat");
+    STAT("/stat"),
+    WATCH_LATER("/watchlater");
 
     private final String commandName;
 
