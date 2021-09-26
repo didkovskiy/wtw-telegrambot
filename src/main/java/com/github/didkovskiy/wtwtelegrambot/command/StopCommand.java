@@ -12,7 +12,7 @@ public class StopCommand implements Command {
     private final SendBotMessageService sendBotMessageService;
     private final TelegramUserService telegramUserService;
 
-    public static final String STOP_MESSAGE = "Your 'WatchLater' list was cleared \uD83D\uDE3F.";
+    public static final String STOP_MESSAGE = "Your 'Watch later' list was cleared \uD83D\uDE3F.";
 
     public StopCommand(SendBotMessageService sendBotMessageService, TelegramUserService telegramUserService) {
         this.sendBotMessageService = sendBotMessageService;
@@ -25,7 +25,7 @@ public class StopCommand implements Command {
         deactivateUser(update);
     }
 
-    private void deactivateUser(Update update) {
+    private void deactivateUser(Update update){
         telegramUserService.findByChatId(update.getMessage().getChatId().toString())
                 .ifPresent(user -> {
                     user.setActive(false);

@@ -2,8 +2,10 @@ package com.github.didkovskiy.wtwtelegrambot.repository.entity;
 
 import lombok.Data;
 
-import javax.persistence.*;
-import java.util.List;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
 /**
  * Telegram User entity.
@@ -19,7 +21,4 @@ public class TelegramUser {
 
     @Column(name = "active")
     private boolean active;
-
-    @ManyToMany(mappedBy = "users", fetch = FetchType.EAGER)
-    private List<WatchLater> watchLaterList;
 }
