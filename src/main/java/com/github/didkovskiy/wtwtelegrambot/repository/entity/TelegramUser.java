@@ -5,6 +5,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 import org.hibernate.Hibernate;
+import org.hibernate.annotations.BatchSize;
 
 import javax.persistence.*;
 import java.util.List;
@@ -29,6 +30,7 @@ public class TelegramUser {
     private boolean active;
 
     @ManyToMany(mappedBy = "users", fetch = FetchType.EAGER)
+    @BatchSize(size = 25)
     private List<WatchLater> watchLaterList;
 
     @Override
