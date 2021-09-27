@@ -1,8 +1,6 @@
 package com.github.didkovskiy.wtwtelegrambot.client;
 
-import com.github.didkovskiy.wtwtelegrambot.client.dto.SearchData;
-import com.github.didkovskiy.wtwtelegrambot.client.dto.SearchResult;
-import com.github.didkovskiy.wtwtelegrambot.client.dto.YouTubeTrailerData;
+import com.github.didkovskiy.wtwtelegrambot.client.dto.*;
 import kong.unirest.Unirest;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
@@ -18,10 +16,12 @@ public class IMDbMovieClientImpl implements IMDbMovieClient {
 
     private final String imdbApiSearchMoviePath;
     private final String imdbApiYouTubeTrailerPath;
+    private final String imdbApiMostPopularMoviesPath;
 
     public IMDbMovieClientImpl(@Value("${imdb.api.path}") String imdbApi, @Value("${api.key}") String apiKey) {
         this.imdbApiSearchMoviePath = imdbApi + "SearchMovie/" + apiKey;
         this.imdbApiYouTubeTrailerPath = imdbApi + "YouTubeTrailer/" + apiKey;
+        this.imdbApiMostPopularMoviesPath = imdbApi + "MostPopularMovies/" + apiKey;
     }
 
     @Override
@@ -56,5 +56,14 @@ public class IMDbMovieClientImpl implements IMDbMovieClient {
         return Unirest.get(imdbApiYouTubeTrailerPath + id)
                 .asObject(YouTubeTrailerData.class)
                 .getBody();
+    }
+
+    @Override
+    public MostPopularDataDetail getRandomMovieDetailsFromMostPopularMovies() {
+        List<MostPopularDataDetail> items = Unirest.get(imdbApiMostPopularMoviesPath)
+                .asObject(MostPopularData.class)
+                .getBody()
+                .getItems();
+        return items.get(ThreadLocalRandom.current().nextInt(items.size()));
     }
 }

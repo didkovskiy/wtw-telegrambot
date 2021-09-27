@@ -1,5 +1,6 @@
 package com.github.didkovskiy.wtwtelegrambot.client;
 
+import com.github.didkovskiy.wtwtelegrambot.client.dto.MostPopularDataDetail;
 import com.github.didkovskiy.wtwtelegrambot.client.dto.SearchData;
 import com.github.didkovskiy.wtwtelegrambot.client.dto.SearchResult;
 import com.github.didkovskiy.wtwtelegrambot.client.dto.YouTubeTrailerData;
@@ -40,5 +41,12 @@ public interface IMDbMovieClient {
      * @return {@link YouTubeTrailerData} object.
      */
     YouTubeTrailerData getYouTubeTrailer(String id);
+
+    /**
+     * Get random {@link MostPopularDataDetail} object from the list of most popular movies.
+     *
+     * @return {@link MostPopularDataDetail} object.
+     */
+    MostPopularDataDetail getRandomMovieDetailsFromMostPopularMovies();
 
 }

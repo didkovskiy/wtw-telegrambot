@@ -13,24 +13,33 @@ public class HelpCommand implements Command {
     private final SendBotMessageService sendBotMessageService;
 
     public static final String HELP_MESSAGE = String.format(
-            "\uD83D\uDD25 <b>Available commands</b> \uD83D\uDD25\n\n"
-                    + "<b>Start\\stop working with bot:</b>\n"
-                    + "%s - start working with me ✅\n"
-                    + "%s - stop working with me \uD83D\uDED1\n\n"
+            "\uD83D\uDD25 <b>Available commands</b> \uD83D\uDD25 \n\n"
+                    + "<b>Start\\stop working with bot:</b> \n"
+                    + "%s - start working with me ▶️\n"
+                    + "%s - stop working with me ⏹ \n\n"
 
                     + "<b>WatchLater list access:</b>\n"
-                    + "%s + 'movie title' - save movie to the WatchLater list\n"
-                    + "%s - see WatchLater list ⌚️\n"
-                    + "%s - remove movie from WatchLater list \n\n"
+                    + "%s + 'movie title' - save movie to the WatchLater list \uD83D\uDCCC \n"
+                    + "%s - see WatchLater list \uD83D\uDD59 \n"
+                    + "%s - remove movie from WatchLater list ✖️\n\n"
 
-                    + "%s - get statistic about active users \uD83E\uDDFE\n"
+                    + "<b>Search a random movie:</b>\n"
+                    + "%s - get a completely random movie from most popular \uD83D\uDC8E \n"
+                    + "%s + '[1-3] keywords' - get a random movie by searching keywords \uD83D\uDD0D \n\n"
+
+                    + "<b>Other:</b>\n"
+                    + "%s - get statistic about active users \uD83D\uDDD2\n"
                     + "%s - get help about working with me \uD83D\uDC4B\n",
+
             START.getCommandName(),
             STOP.getCommandName(),
 
             WATCH_LATER.getCommandName(),
             WATCH_LATER.getCommandName(),
             REMOVE_WATCH_LATER.getCommandName(),
+
+            RANDOM.getCommandName(),
+            RANDOM.getCommandName(),
 
             STAT.getCommandName(),
             HELP.getCommandName());

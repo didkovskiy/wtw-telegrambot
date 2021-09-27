@@ -1,5 +1,10 @@
 # Release Notes
 
+## 0.7.0-SNAPSHOT
+
+* Added ability to get a random movie from 
+most popular movies or by typing keywords.
+
 ## 0.6.0-SNAPSHOT
 
 * Added ability to remove movies from 'Watch Later' list. 
