@@ -10,7 +10,8 @@ public enum CommandName {
     HELP("/help"),
     NO("/nocommand"),
     STAT("/stat"),
-    WATCH_LATER("/watchlater");
+    WATCH_LATER("/watchlater"),
+    REMOVE_WATCH_LATER("/remove");
 
     private final String commandName;
 

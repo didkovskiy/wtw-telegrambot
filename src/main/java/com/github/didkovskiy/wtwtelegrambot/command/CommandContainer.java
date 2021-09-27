@@ -26,6 +26,7 @@ public class CommandContainer {
                 .put(NO.getCommandName(), new NoCommand(sendBotMessageService))
                 .put(STAT.getCommandName(), new StatCommand(sendBotMessageService, telegramUserService))
                 .put(WATCH_LATER.getCommandName(), new WatchLaterCommand(sendBotMessageService, watchLaterService, imDbMovieClient, telegramUserService))
+                .put(REMOVE_WATCH_LATER.getCommandName(), new RemoveWatchLaterCommand(sendBotMessageService, telegramUserService, watchLaterService))
                 .build();
 
         unknownCommand = new UnknownCommand(sendBotMessageService);
