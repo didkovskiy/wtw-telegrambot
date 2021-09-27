@@ -27,6 +27,9 @@ public class HelpCommand implements Command {
                     + "%s - get a completely random movie from most popular \uD83D\uDC8E \n"
                     + "%s + '[1-3] keywords' - get a random movie by searching keywords \uD83D\uDD0D \n\n"
 
+                    + "<b>Watch the movie trailer:</b>\n"
+                    + "%s + 'movie title' - find the trailer for this movie \uD83C\uDF9E \n\n"
+
                     + "<b>Other:</b>\n"
                     + "%s - get statistic about active users \uD83D\uDDD2\n"
                     + "%s - get help about working with me \uD83D\uDC4B\n",
@@ -40,6 +43,8 @@ public class HelpCommand implements Command {
 
             RANDOM.getCommandName(),
             RANDOM.getCommandName(),
+
+            TRAILER.getCommandName(),
 
             STAT.getCommandName(),
             HELP.getCommandName());

@@ -36,13 +36,13 @@ public class RandomCommand implements Command {
             sendRandomMostPopularMovieInfo(chatId, mostPopularDataDetail);
             return;
         }
-        String watchLaterMovieKeywords = Arrays.stream(getMessage(update).split(SPACE)).skip(1).limit(3).collect(Collectors.joining(SPACE));
-        if (isAlphanumericSpace(watchLaterMovieKeywords)) {
-            SearchResult searchResult = imDbMovieClient.getRandomSearchResult(watchLaterMovieKeywords);
+        String movieKeywords = Arrays.stream(getMessage(update).split(SPACE)).skip(1).limit(3).collect(Collectors.joining(SPACE));
+        if (isAlphanumericSpace(movieKeywords)) {
+            SearchResult searchResult = imDbMovieClient.getRandomSearchResult(movieKeywords);
             if (isNull(searchResult)) {
-                sendMovieNotFoundMessage(chatId, watchLaterMovieKeywords);
+                sendMovieNotFoundMessage(chatId, movieKeywords);
             } else sendRandomMovieByKeywordInfo(chatId, searchResult);
-        } else sendMovieNotFoundMessage(chatId, watchLaterMovieKeywords);
+        } else sendMovieNotFoundMessage(chatId, movieKeywords);
     }
 
     private void sendRandomMostPopularMovieInfo(String chatId, MostPopularDataDetail mostPopularDataDetail) {
@@ -69,8 +69,8 @@ public class RandomCommand implements Command {
         sendBotMessageService.sendMessage(chatId, randomMovieByKeywordInfo);
     }
 
-    private void sendMovieNotFoundMessage(String chatId, String watchLaterMovieKeywords) {
-        String movieNotFoundMessage = String.format("I didn't find a movie by these words: <b>%s</b>", watchLaterMovieKeywords);
+    private void sendMovieNotFoundMessage(String chatId, String movieKeywords) {
+        String movieNotFoundMessage = String.format("I didn't find a movie by these words: <b>%s</b>", movieKeywords);
         sendBotMessageService.sendMessage(chatId, movieNotFoundMessage);
     }
 

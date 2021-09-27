@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>com.github.didkovskiy</groupId>
 	<artifactId>wtw-telegrambot</artifactId>
-	<version>0.7.0-SNAPSHOT</version>
+	<version>0.8.0-SNAPSHOT</version>
 	<name>What to Watch TelegramBot</name>
 	<description>Telegram bot that helps to choose movies.</description>
 

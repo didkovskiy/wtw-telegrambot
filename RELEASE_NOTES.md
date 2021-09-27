@@ -1,5 +1,9 @@
 # Release Notes
 
+## 0.8.0-SNAPSHOT
+
+* Added ability to get a trailer of a specific movie.
+
 ## 0.7.0-SNAPSHOT
 
 * Added ability to get a random movie from 

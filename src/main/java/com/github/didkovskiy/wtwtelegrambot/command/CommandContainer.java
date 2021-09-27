@@ -28,6 +28,7 @@ public class CommandContainer {
                 .put(WATCH_LATER.getCommandName(), new WatchLaterCommand(sendBotMessageService, watchLaterService, imDbMovieClient, telegramUserService))
                 .put(REMOVE_WATCH_LATER.getCommandName(), new RemoveWatchLaterCommand(sendBotMessageService, telegramUserService, watchLaterService))
                 .put(RANDOM.getCommandName(), new RandomCommand(sendBotMessageService, imDbMovieClient))
+                .put(TRAILER.getCommandName(), new TrailerCommand(sendBotMessageService, imDbMovieClient))
                 .build();
 
         unknownCommand = new UnknownCommand(sendBotMessageService);

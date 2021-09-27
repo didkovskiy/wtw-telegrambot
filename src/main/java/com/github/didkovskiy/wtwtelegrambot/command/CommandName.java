@@ -12,7 +12,8 @@ public enum CommandName {
     STAT("/stat"),
     WATCH_LATER("/watchlater"),
     REMOVE_WATCH_LATER("/remove"),
-    RANDOM("/random");
+    RANDOM("/random"),
+    TRAILER("/trailer");
 
     private final String commandName;
 
