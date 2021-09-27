@@ -5,6 +5,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 import org.hibernate.Hibernate;
+import org.hibernate.annotations.BatchSize;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -28,6 +29,7 @@ public class WatchLater {
     private String description;
 
     @ManyToMany(fetch = FetchType.EAGER)
+    @BatchSize(size = 25)
     @JoinTable(
             name = "wtw_list_x_user",
             joinColumns = @JoinColumn(name = "wtw_list_id"),
