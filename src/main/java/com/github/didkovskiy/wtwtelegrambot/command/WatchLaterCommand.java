@@ -18,6 +18,7 @@ import static com.github.didkovskiy.wtwtelegrambot.command.CommandUtils.getChatI
 import static com.github.didkovskiy.wtwtelegrambot.command.CommandUtils.getMessage;
 import static java.util.Objects.isNull;
 import static org.apache.commons.lang3.StringUtils.SPACE;
+import static org.apache.commons.lang3.StringUtils.isAlphanumericSpace;
 
 /**
  * Watch Later {@link Command}.
@@ -44,17 +45,15 @@ public class WatchLaterCommand implements Command {
         }
         String watchLaterMovieTitle = Arrays.stream(getMessage(update).split(SPACE)).skip(1).collect(Collectors.joining(SPACE));
         String chatId = getChatId(update);
-        if (watchLaterMovieTitle.contains("/")) {
-            sendMovieNotFoundMessage(chatId, watchLaterMovieTitle);
-            return;
-        }
-        SearchResult searchResult = imDbMovieClient.getFirstSearchResult(watchLaterMovieTitle);
-        if (isNull(searchResult)) {
-            sendMovieNotFoundMessage(chatId, watchLaterMovieTitle);
-        } else {
-            WatchLater watchLaterSaved = watchLaterService.save(chatId, searchResult);
-            sendBotMessageService.sendMessage(chatId, String.format("The movie <b>%s</b> was added to the WatchLater list.", watchLaterSaved.getTitle()));
-        }
+        if (isAlphanumericSpace(watchLaterMovieTitle)) {
+            SearchResult searchResult = imDbMovieClient.getFirstSearchResult(watchLaterMovieTitle);
+            if (isNull(searchResult)) {
+                sendMovieNotFoundMessage(chatId, watchLaterMovieTitle);
+            } else {
+                WatchLater watchLaterSaved = watchLaterService.save(chatId, searchResult);
+                sendBotMessageService.sendMessage(chatId, String.format("The movie <b>%s</b> was added to the WatchLater list.", watchLaterSaved.getTitle()));
+            }
+        } else sendMovieNotFoundMessage(chatId, watchLaterMovieTitle);
     }
 
     private void sendWatchLaterList(String chatId) {

@@ -11,7 +11,8 @@ public enum CommandName {
     NO("/nocommand"),
     STAT("/stat"),
     WATCH_LATER("/watchlater"),
-    REMOVE_WATCH_LATER("/remove");
+    REMOVE_WATCH_LATER("/remove"),
+    RANDOM("/random");
 
     private final String commandName;
 
