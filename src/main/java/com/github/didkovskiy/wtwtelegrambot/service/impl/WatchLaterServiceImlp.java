@@ -48,4 +48,14 @@ public class WatchLaterServiceImlp implements WatchLaterService {
         }
         return watchLaterRepository.save(watchLater);
     }
+
+    @Override
+    public WatchLater save(WatchLater watchLater) {
+        return watchLaterRepository.save(watchLater);
+    }
+
+    @Override
+    public Optional<WatchLater> findById(String id) {
+        return watchLaterRepository.findById(id);
+    }
 }

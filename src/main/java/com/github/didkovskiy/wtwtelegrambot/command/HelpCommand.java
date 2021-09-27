@@ -20,7 +20,8 @@ public class HelpCommand implements Command {
 
                     + "<b>WatchLater list access:</b>\n"
                     + "%s + 'movie title' - save movie to the WatchLater list\n"
-                    + "%s - see WatchLater list ⌚️\n\n"
+                    + "%s - see WatchLater list ⌚️\n"
+                    + "%s - remove movie from WatchLater list \n\n"
 
                     + "%s - get statistic about active users \uD83E\uDDFE\n"
                     + "%s - get help about working with me \uD83D\uDC4B\n",
@@ -29,6 +30,7 @@ public class HelpCommand implements Command {
 
             WATCH_LATER.getCommandName(),
             WATCH_LATER.getCommandName(),
+            REMOVE_WATCH_LATER.getCommandName(),
 
             STAT.getCommandName(),
             HELP.getCommandName());

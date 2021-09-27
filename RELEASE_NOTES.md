@@ -1,5 +1,9 @@
 # Release Notes
 
+## 0.6.0-SNAPSHOT
+
+* Added ability to remove movies from 'Watch Later' list. 
+
 ## 0.5.0-SNAPSHOT
 
 * Added ability to save movies to the 'Watch Later' list.

@@ -42,9 +42,9 @@ public class WatchLaterCommand implements Command {
             sendWatchLaterList(getChatId(update));
             return;
         }
-        String watchLaterMovieTitle = Arrays.stream(getMessage(update).split(SPACE)).skip(1).collect(Collectors.joining(" "));
+        String watchLaterMovieTitle = Arrays.stream(getMessage(update).split(SPACE)).skip(1).collect(Collectors.joining(SPACE));
         String chatId = getChatId(update);
-        if(watchLaterMovieTitle.contains("/")){
+        if (watchLaterMovieTitle.contains("/")) {
             sendMovieNotFoundMessage(chatId, watchLaterMovieTitle);
             return;
         }
