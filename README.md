@@ -1,7 +1,7 @@
 # wtw-telegrambot
 What to Watch Telegram bot helps you to choose a movie.
 
-## Deployment
+## Deployment (not available now)
 Required software:
 - terminal for running bash scripts
 - docker

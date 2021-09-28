@@ -4,6 +4,7 @@ import com.github.didkovskiy.wtwtelegrambot.client.dto.SearchResult;
 import com.github.didkovskiy.wtwtelegrambot.repository.entity.WatchLater;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 /**
@@ -34,5 +35,12 @@ public interface WatchLaterService {
      * @return {@link Optional} of {@link WatchLater} object.
      */
     Optional<WatchLater> findById(String id);
+
+    /**
+     * Find all {@link WatchLater} entities from database.
+     *
+     * @return list of all {@link WatchLater} records from database.
+     */
+    List<WatchLater> findAll();
 
 }

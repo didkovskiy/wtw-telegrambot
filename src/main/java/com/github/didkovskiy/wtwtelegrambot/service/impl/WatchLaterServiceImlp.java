@@ -9,6 +9,7 @@ import com.github.didkovskiy.wtwtelegrambot.service.WatchLaterService;
 import org.springframework.stereotype.Service;
 
 import javax.ws.rs.NotFoundException;
+import java.util.List;
 import java.util.Optional;
 
 /**
@@ -28,7 +29,6 @@ public class WatchLaterServiceImlp implements WatchLaterService {
     @Override
     public WatchLater save(String chatId, SearchResult searchResult) {
         TelegramUser telegramUser = telegramUserService.findByChatId(chatId).orElseThrow(NotFoundException::new);
-        //todo add exception handling
         WatchLater watchLater;
         Optional<WatchLater> watchLaterFromDB = watchLaterRepository.findById(searchResult.getId());
         if (watchLaterFromDB.isPresent()) {
@@ -57,5 +57,10 @@ public class WatchLaterServiceImlp implements WatchLaterService {
     @Override
     public Optional<WatchLater> findById(String id) {
         return watchLaterRepository.findById(id);
+    }
+
+    @Override
+    public List<WatchLater> findAll() {
+        return watchLaterRepository.findAll();
     }
 }

@@ -57,7 +57,6 @@ public class WatchLaterCommand implements Command {
     }
 
     private void sendWatchLaterList(String chatId) {
-        //todo add exception handling
         List<WatchLater> watchLaterList = telegramUserService.findByChatId(chatId).orElseThrow(NotFoundException::new)
                 .getWatchLaterList();
         if (watchLaterList.isEmpty()) {
@@ -65,8 +64,11 @@ public class WatchLaterCommand implements Command {
         } else {
             StringBuilder sb = new StringBuilder("Your WatchLater list: \n\n");
             for (WatchLater watchLater : watchLaterList) {
-                sb.append(String.format(
-                        "<b>Title:</b> %s\n" + "<b>Description:</b> %s\n\n", watchLater.getTitle(), watchLater.getDescription()));
+                sb.append(String.format("<b>Title:</b> %s \n"
+                        + "<b>Description:</b> %s \n"
+                        + "〰️〰️〰️〰️〰️〰️\n\n",
+                        watchLater.getTitle(),
+                        watchLater.getDescription()));
             }
             sendBotMessageService.sendMessage(chatId, sb.toString());
         }
