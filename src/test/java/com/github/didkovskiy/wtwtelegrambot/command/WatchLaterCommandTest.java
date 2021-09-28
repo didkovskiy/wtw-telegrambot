@@ -1,6 +1,6 @@
 package com.github.didkovskiy.wtwtelegrambot.command;
 
-import com.github.didkovskiy.wtwtelegrambot.client.IMDbMovieClient;
+import com.github.didkovskiy.wtwtelegrambot.client.IMDbSearchMovieClient;
 import com.github.didkovskiy.wtwtelegrambot.service.SendBotMessageService;
 import com.github.didkovskiy.wtwtelegrambot.service.TelegramUserService;
 import com.github.didkovskiy.wtwtelegrambot.service.WatchLaterService;
@@ -15,17 +15,17 @@ import org.telegram.telegrambots.meta.api.objects.Update;
 class WatchLaterCommandTest {
 
     private SendBotMessageService sendBotMessageService;
-    private IMDbMovieClient imDbMovieClient;
+    private IMDbSearchMovieClient imDbSearchMovieClient;
     private WatchLaterCommand watchLaterCommand;
 
     @BeforeEach
     public void init() {
         sendBotMessageService = Mockito.mock(SendBotMessageService.class);
         WatchLaterService watchLaterService = Mockito.mock(WatchLaterService.class);
-        imDbMovieClient = Mockito.mock(IMDbMovieClient.class);
+        imDbSearchMovieClient = Mockito.mock(IMDbSearchMovieClient.class);
         TelegramUserService telegramUserService = Mockito.mock(TelegramUserService.class);
 
-        watchLaterCommand = new WatchLaterCommand(sendBotMessageService, watchLaterService, imDbMovieClient, telegramUserService);
+        watchLaterCommand = new WatchLaterCommand(sendBotMessageService, watchLaterService, imDbSearchMovieClient, telegramUserService);
 
     }
 
@@ -48,7 +48,7 @@ class WatchLaterCommandTest {
         Mockito.when(message2.getText()).thenReturn("/watchlater " + movieTitleWithSlash);
         update2.setMessage(message2);
 
-        Mockito.when(imDbMovieClient.getFirstSearchResult(movieTitle)).thenReturn(null);
+        Mockito.when(imDbSearchMovieClient.getFirstSearchResult(movieTitle)).thenReturn(null);
 
         String movieNotFoundMessage = String.format("I didn't find a movie with a title <b>%s</b>", movieTitle);
         String movieNotFoundMessageForSlash = String.format("I didn't find a movie with a title <b>%s</b>", movieTitleWithSlash);

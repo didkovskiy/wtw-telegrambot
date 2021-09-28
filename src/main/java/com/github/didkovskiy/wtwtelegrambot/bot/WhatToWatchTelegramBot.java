@@ -1,6 +1,8 @@
 package com.github.didkovskiy.wtwtelegrambot.bot;
 
-import com.github.didkovskiy.wtwtelegrambot.client.IMDbMovieClient;
+import com.github.didkovskiy.wtwtelegrambot.client.IMDbMostPopularDataClient;
+import com.github.didkovskiy.wtwtelegrambot.client.IMDbSearchMovieClient;
+import com.github.didkovskiy.wtwtelegrambot.client.IMDbYouTubeClient;
 import com.github.didkovskiy.wtwtelegrambot.command.CommandContainer;
 import com.github.didkovskiy.wtwtelegrambot.service.StatisticsService;
 import com.github.didkovskiy.wtwtelegrambot.service.WatchLaterService;
@@ -34,13 +36,17 @@ public class WhatToWatchTelegramBot extends TelegramLongPollingBot {
 
     public WhatToWatchTelegramBot(TelegramUserService telegramUserService,
                                   WatchLaterService watchLaterService,
-                                  IMDbMovieClient imDbMovieClient,
+                                  IMDbSearchMovieClient imDbSearchMovieClient,
+                                  IMDbYouTubeClient imDbYouTubeClient,
+                                  IMDbMostPopularDataClient imDbMostPopularDataClient,
                                   StatisticsService statisticsService,
                                   @Value("#{'${bot.admins}'.split(',')}") List<String> admins) {
         this.commandContainer = new CommandContainer(new SendBotMessageServiceImpl(this),
                 telegramUserService,
                 watchLaterService,
-                imDbMovieClient,
+                imDbSearchMovieClient,
+                imDbYouTubeClient,
+                imDbMostPopularDataClient,
                 statisticsService,
                 admins);
     }

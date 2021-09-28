@@ -1,6 +1,8 @@
 package com.github.didkovskiy.wtwtelegrambot.command;
 
-import com.github.didkovskiy.wtwtelegrambot.client.IMDbMovieClient;
+import com.github.didkovskiy.wtwtelegrambot.client.IMDbMostPopularDataClient;
+import com.github.didkovskiy.wtwtelegrambot.client.IMDbSearchMovieClient;
+import com.github.didkovskiy.wtwtelegrambot.client.IMDbYouTubeClient;
 import com.github.didkovskiy.wtwtelegrambot.command.annotation.AdminCommand;
 import com.github.didkovskiy.wtwtelegrambot.service.SendBotMessageService;
 import com.github.didkovskiy.wtwtelegrambot.service.StatisticsService;
@@ -23,7 +25,8 @@ public class CommandContainer {
     private final List<String> admins;
 
     public CommandContainer(SendBotMessageService sendBotMessageService, TelegramUserService telegramUserService,
-                            WatchLaterService watchLaterService, IMDbMovieClient imDbMovieClient,
+                            WatchLaterService watchLaterService, IMDbSearchMovieClient imDbSearchMovieClient,
+                            IMDbYouTubeClient imDbYouTubeClient, IMDbMostPopularDataClient imDbMostPopularDataClient,
                             StatisticsService statisticsService, List<String> admins) {
         this.admins = admins;
 
@@ -33,10 +36,10 @@ public class CommandContainer {
                 .put(HELP.getCommandName(), new HelpCommand(sendBotMessageService))
                 .put(NO.getCommandName(), new NoCommand(sendBotMessageService))
                 .put(STAT.getCommandName(), new StatCommand(sendBotMessageService, telegramUserService, statisticsService))
-                .put(WATCH_LATER.getCommandName(), new WatchLaterCommand(sendBotMessageService, watchLaterService, imDbMovieClient, telegramUserService))
+                .put(WATCH_LATER.getCommandName(), new WatchLaterCommand(sendBotMessageService, watchLaterService, imDbSearchMovieClient, telegramUserService))
                 .put(REMOVE_WATCH_LATER.getCommandName(), new RemoveWatchLaterCommand(sendBotMessageService, telegramUserService, watchLaterService))
-                .put(RANDOM.getCommandName(), new RandomCommand(sendBotMessageService, imDbMovieClient))
-                .put(TRAILER.getCommandName(), new TrailerCommand(sendBotMessageService, imDbMovieClient))
+                .put(RANDOM.getCommandName(), new RandomCommand(sendBotMessageService, imDbSearchMovieClient, imDbMostPopularDataClient))
+                .put(TRAILER.getCommandName(), new TrailerCommand(sendBotMessageService, imDbSearchMovieClient, imDbYouTubeClient))
                 .put(CLEAR_WATCH_LATER.getCommandName(), new ClearWatchLaterCommand(sendBotMessageService, telegramUserService, watchLaterService))
                 .build();
 

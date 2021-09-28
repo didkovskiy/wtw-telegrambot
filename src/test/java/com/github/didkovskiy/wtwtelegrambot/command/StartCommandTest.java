@@ -15,7 +15,7 @@ class StartCommandTest extends AbstractCommandTest {
 
     @Override
     String getCommandMessage() {
-        return START_MESSAGE;
+        return "Hello, FirstName \uD83D\uDE0F ";
     }
 
     @Override

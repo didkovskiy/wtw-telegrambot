@@ -1,5 +1,6 @@
-package com.github.didkovskiy.wtwtelegrambot.client;
+package com.github.didkovskiy.wtwtelegrambot.client.Impl;
 
+import com.github.didkovskiy.wtwtelegrambot.client.IMDbSearchMovieClient;
 import com.github.didkovskiy.wtwtelegrambot.client.dto.*;
 import kong.unirest.Unirest;
 import lombok.extern.slf4j.Slf4j;
@@ -12,20 +13,16 @@ import java.util.concurrent.ThreadLocalRandom;
 import static org.apache.commons.lang3.StringUtils.isNotEmpty;
 
 /**
- * Implementation of the {@link IMDbMovieClient} interface.
+ * Implementation of the {@link IMDbSearchMovieClient} interface.
  */
 @Component
 @Slf4j
-public class IMDbMovieClientImpl implements IMDbMovieClient {
+public class IMDbSearchMovieClientImpl implements IMDbSearchMovieClient {
 
     private final String imdbApiSearchMoviePath;
-    private final String imdbApiYouTubeTrailerPath;
-    private final String imdbApiMostPopularMoviesPath;
 
-    public IMDbMovieClientImpl(@Value("${imdb.api.path}") String imdbApi, @Value("${api.key}") String apiKey) {
+    public IMDbSearchMovieClientImpl(@Value("${imdb.api.path}") String imdbApi, @Value("${api.key}") String apiKey) {
         this.imdbApiSearchMoviePath = imdbApi + "SearchMovie/" + apiKey;
-        this.imdbApiYouTubeTrailerPath = imdbApi + "YouTubeTrailer/" + apiKey;
-        this.imdbApiMostPopularMoviesPath = imdbApi + "MostPopularMovies/" + apiKey;
     }
 
     @Override
@@ -60,26 +57,5 @@ public class IMDbMovieClientImpl implements IMDbMovieClient {
         List<SearchResult> resultList = searchData.getResults();
         if (resultList.isEmpty()) return null;
         else return resultList.get(ThreadLocalRandom.current().nextInt(resultList.size()));
-    }
-
-    @Override
-    public YouTubeTrailerData getYouTubeTrailer(String id) {
-        YouTubeTrailerData youTubeTrailerData = Unirest.get(imdbApiYouTubeTrailerPath + id)
-                .asObject(YouTubeTrailerData.class)
-                .getBody();
-        if (isNotEmpty(youTubeTrailerData.getErrorMessage()))
-            log.error(youTubeTrailerData.getErrorMessage());
-        return youTubeTrailerData;
-    }
-
-    @Override
-    public MostPopularDataDetail getRandomMovieDetailsFromMostPopularMovies() {
-        MostPopularData mostPopularData = Unirest.get(imdbApiMostPopularMoviesPath)
-                .asObject(MostPopularData.class)
-                .getBody();
-        if (isNotEmpty(mostPopularData.getErrorMessage()))
-            log.error(mostPopularData.getErrorMessage());
-        List<MostPopularDataDetail> items = mostPopularData.getItems();
-        return items.get(ThreadLocalRandom.current().nextInt(items.size()));
     }
 }

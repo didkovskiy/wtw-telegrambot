@@ -1,6 +1,8 @@
 package com.github.didkovskiy.wtwtelegrambot.command;
 
-import com.github.didkovskiy.wtwtelegrambot.client.IMDbMovieClient;
+import com.github.didkovskiy.wtwtelegrambot.client.IMDbMostPopularDataClient;
+import com.github.didkovskiy.wtwtelegrambot.client.IMDbSearchMovieClient;
+import com.github.didkovskiy.wtwtelegrambot.client.IMDbYouTubeClient;
 import com.github.didkovskiy.wtwtelegrambot.service.SendBotMessageService;
 import com.github.didkovskiy.wtwtelegrambot.service.StatisticsService;
 import com.github.didkovskiy.wtwtelegrambot.service.TelegramUserService;
@@ -10,11 +12,9 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 
-import java.util.Arrays;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 @DisplayName("Unit-level testing for CommandContainer")
 class CommandContainerTest {
@@ -27,11 +27,15 @@ class CommandContainerTest {
         SendBotMessageService sendBotMessageService = Mockito.mock(SendBotMessageService.class);
         TelegramUserService telegramUserService = Mockito.mock(TelegramUserService.class);
         WatchLaterService watchLaterService = Mockito.mock(WatchLaterService.class);
-        IMDbMovieClient imDbMovieClient = Mockito.mock(IMDbMovieClient.class);
+        IMDbSearchMovieClient imDbSearchMovieClient = Mockito.mock(IMDbSearchMovieClient.class);
+        IMDbYouTubeClient imDbYouTubeClient = Mockito.mock(IMDbYouTubeClient.class);
+        IMDbMostPopularDataClient imDbMostPopularDataClient = Mockito.mock(IMDbMostPopularDataClient.class);
         StatisticsService statisticsService = Mockito.mock(StatisticsService.class);
         List<String> admins = List.of("admin");
+
         commandContainer = new CommandContainer(sendBotMessageService,
-                telegramUserService, watchLaterService, imDbMovieClient, statisticsService, admins);
+                telegramUserService, watchLaterService, imDbSearchMovieClient,
+                imDbYouTubeClient, imDbMostPopularDataClient, statisticsService, admins);
     }
 
     @Test
