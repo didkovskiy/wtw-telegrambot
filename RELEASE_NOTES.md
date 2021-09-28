@@ -1,5 +1,16 @@
 # Release Notes
 
+## 1.0.0
+
+Implemented all the logic, planned up to MVP:
+* User can find movie by typing keywords.
+* User can find a completely random movie from most popular.
+* User can save movies in 'Watch Later' list and see results.
+* User can remove movies and clear the 'Watch Later' list.
+* User can search YouTube trailer of a specific movie.
+* User can get help about working with bot.
+* Admin has ability to see bot statistics.
+
 ## 0.9.0-SNAPSHOT
 
 * WTWTB-10: Added extended bot statistics for admins.

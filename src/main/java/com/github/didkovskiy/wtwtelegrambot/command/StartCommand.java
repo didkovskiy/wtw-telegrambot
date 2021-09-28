@@ -13,8 +13,7 @@ public class StartCommand implements Command {
     private final SendBotMessageService sendBotMessageService;
     private final TelegramUserService telegramUserService;
 
-    public final static String START_MESSAGE = "Hello, WhatToWatch Telegram Bot at your service \uD83D\uDE0F. " +
-            "I'm here to help you to find a movie to watch or at least to steer you in the right direction to achieve this goal. \uD83C\uDFAC \uD83C\uDFA5";
+    public final static String START_MESSAGE = "Hello, %s \uD83D\uDE0F ";
 
     public StartCommand(SendBotMessageService sendBotMessageService, TelegramUserService telegramUserService) {
         this.sendBotMessageService = sendBotMessageService;
@@ -24,8 +23,9 @@ public class StartCommand implements Command {
     @Override
     public void execute(Update update) {
         String chatId = update.getMessage().getChatId().toString();
+        String userFirstName = update.getMessage().getFrom().getFirstName();
         activateUser(chatId);
-        sendBotMessageService.sendMessage(chatId, START_MESSAGE);
+        sendBotMessageService.sendMessage(chatId, String.format(START_MESSAGE, userFirstName));
     }
 
     private void activateUser(String chatId) {

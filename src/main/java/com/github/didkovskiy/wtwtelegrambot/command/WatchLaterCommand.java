@@ -1,6 +1,6 @@
 package com.github.didkovskiy.wtwtelegrambot.command;
 
-import com.github.didkovskiy.wtwtelegrambot.client.IMDbMovieClient;
+import com.github.didkovskiy.wtwtelegrambot.client.IMDbSearchMovieClient;
 import com.github.didkovskiy.wtwtelegrambot.client.dto.SearchResult;
 import com.github.didkovskiy.wtwtelegrambot.repository.entity.WatchLater;
 import com.github.didkovskiy.wtwtelegrambot.service.SendBotMessageService;
@@ -27,13 +27,13 @@ public class WatchLaterCommand implements Command {
 
     private final SendBotMessageService sendBotMessageService;
     private final WatchLaterService watchLaterService;
-    private final IMDbMovieClient imDbMovieClient;
+    private final IMDbSearchMovieClient imDbSearchMovieClient;
     private final TelegramUserService telegramUserService;
 
-    public WatchLaterCommand(SendBotMessageService sendBotMessageService, WatchLaterService watchLaterService, IMDbMovieClient imDbMovieClient, TelegramUserService telegramUserService) {
+    public WatchLaterCommand(SendBotMessageService sendBotMessageService, WatchLaterService watchLaterService, IMDbSearchMovieClient imDbSearchMovieClient, TelegramUserService telegramUserService) {
         this.sendBotMessageService = sendBotMessageService;
         this.watchLaterService = watchLaterService;
-        this.imDbMovieClient = imDbMovieClient;
+        this.imDbSearchMovieClient = imDbSearchMovieClient;
         this.telegramUserService = telegramUserService;
     }
 
@@ -46,7 +46,7 @@ public class WatchLaterCommand implements Command {
         String watchLaterMovieTitle = Arrays.stream(getMessage(update).split(SPACE)).skip(1).collect(Collectors.joining(SPACE));
         String chatId = getChatId(update);
         if (isAlphanumericSpace(watchLaterMovieTitle)) {
-            SearchResult searchResult = imDbMovieClient.getFirstSearchResult(watchLaterMovieTitle);
+            SearchResult searchResult = imDbSearchMovieClient.getFirstSearchResult(watchLaterMovieTitle);
             if (isNull(searchResult)) {
                 sendMovieNotFoundMessage(chatId, watchLaterMovieTitle);
             } else {
@@ -65,8 +65,8 @@ public class WatchLaterCommand implements Command {
             StringBuilder sb = new StringBuilder("Your WatchLater list: \n\n");
             for (WatchLater watchLater : watchLaterList) {
                 sb.append(String.format("<b>Title:</b> %s \n"
-                        + "<b>Description:</b> %s \n"
-                        + "〰️〰️〰️〰️〰️〰️\n\n",
+                                + "<b>Description:</b> %s \n"
+                                + "〰️〰️〰️〰️〰️〰️\n\n",
                         watchLater.getTitle(),
                         watchLater.getDescription()));
             }

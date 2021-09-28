@@ -1,6 +1,7 @@
 package com.github.didkovskiy.wtwtelegrambot.command;
 
-import com.github.didkovskiy.wtwtelegrambot.client.IMDbMovieClient;
+import com.github.didkovskiy.wtwtelegrambot.client.IMDbMostPopularDataClient;
+import com.github.didkovskiy.wtwtelegrambot.client.IMDbSearchMovieClient;
 import com.github.didkovskiy.wtwtelegrambot.client.dto.MostPopularDataDetail;
 import com.github.didkovskiy.wtwtelegrambot.client.dto.SearchResult;
 import com.github.didkovskiy.wtwtelegrambot.service.SendBotMessageService;
@@ -21,24 +22,26 @@ import static org.apache.commons.lang3.StringUtils.*;
 public class RandomCommand implements Command {
 
     private final SendBotMessageService sendBotMessageService;
-    private final IMDbMovieClient imDbMovieClient;
+    private final IMDbSearchMovieClient imDbSearchMovieClient;
+    private final IMDbMostPopularDataClient imDbMostPopularDataClient;
 
-    public RandomCommand(SendBotMessageService sendBotMessageService, IMDbMovieClient imDbMovieClient) {
+    public RandomCommand(SendBotMessageService sendBotMessageService, IMDbSearchMovieClient imDbSearchMovieClient, IMDbMostPopularDataClient imDbMostPopularDataClient) {
         this.sendBotMessageService = sendBotMessageService;
-        this.imDbMovieClient = imDbMovieClient;
+        this.imDbSearchMovieClient = imDbSearchMovieClient;
+        this.imDbMostPopularDataClient = imDbMostPopularDataClient;
     }
 
     @Override
     public void execute(Update update) {
         String chatId = getChatId(update);
         if (getMessage(update).equalsIgnoreCase(RANDOM.getCommandName())) {
-            MostPopularDataDetail mostPopularDataDetail = imDbMovieClient.getRandomMovieDetailsFromMostPopularMovies();
+            MostPopularDataDetail mostPopularDataDetail = imDbMostPopularDataClient.getRandomMovieDetailsFromMostPopularMovies();
             sendRandomMostPopularMovieInfo(chatId, mostPopularDataDetail);
             return;
         }
         String movieKeywords = Arrays.stream(getMessage(update).split(SPACE)).skip(1).limit(3).collect(Collectors.joining(SPACE));
         if (isAlphanumericSpace(movieKeywords)) {
-            SearchResult searchResult = imDbMovieClient.getRandomSearchResult(movieKeywords);
+            SearchResult searchResult = imDbSearchMovieClient.getRandomSearchResult(movieKeywords);
             if (isNull(searchResult)) {
                 sendMovieNotFoundMessage(chatId, movieKeywords);
             } else sendRandomMovieByKeywordInfo(chatId, searchResult);

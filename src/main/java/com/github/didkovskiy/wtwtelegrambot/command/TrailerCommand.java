@@ -1,6 +1,7 @@
 package com.github.didkovskiy.wtwtelegrambot.command;
 
-import com.github.didkovskiy.wtwtelegrambot.client.IMDbMovieClient;
+import com.github.didkovskiy.wtwtelegrambot.client.IMDbSearchMovieClient;
+import com.github.didkovskiy.wtwtelegrambot.client.IMDbYouTubeClient;
 import com.github.didkovskiy.wtwtelegrambot.client.dto.SearchResult;
 import com.github.didkovskiy.wtwtelegrambot.client.dto.YouTubeTrailerData;
 import com.github.didkovskiy.wtwtelegrambot.service.SendBotMessageService;
@@ -22,11 +23,13 @@ import static org.apache.commons.lang3.StringUtils.isAlphanumericSpace;
 public class TrailerCommand implements Command {
 
     private final SendBotMessageService sendBotMessageService;
-    private final IMDbMovieClient imDbMovieClient;
+    private final IMDbSearchMovieClient imDbSearchMovieClient;
+    private final IMDbYouTubeClient imDbYouTubeClient;
 
-    public TrailerCommand(SendBotMessageService sendBotMessageService, IMDbMovieClient imDbMovieClient) {
+    public TrailerCommand(SendBotMessageService sendBotMessageService, IMDbSearchMovieClient imDbSearchMovieClient, IMDbYouTubeClient imDbYouTubeClient) {
         this.sendBotMessageService = sendBotMessageService;
-        this.imDbMovieClient = imDbMovieClient;
+        this.imDbSearchMovieClient = imDbSearchMovieClient;
+        this.imDbYouTubeClient = imDbYouTubeClient;
     }
 
     @Override
@@ -38,12 +41,12 @@ public class TrailerCommand implements Command {
         }
         String movieTitle = Arrays.stream(getMessage(update).split(SPACE)).skip(1).collect(Collectors.joining(SPACE));
         if (isAlphanumericSpace(movieTitle)) {
-            SearchResult searchResult = imDbMovieClient.getFirstSearchResult(movieTitle);
+            SearchResult searchResult = imDbSearchMovieClient.getFirstSearchResult(movieTitle);
             if (isNull(searchResult)) {
                 sendTrailerNotFoundMessage(chatId, movieTitle);
                 return;
             }
-            YouTubeTrailerData youTubeTrailerData = imDbMovieClient.getYouTubeTrailer(searchResult.getId());
+            YouTubeTrailerData youTubeTrailerData = imDbYouTubeClient.getYouTubeTrailer(searchResult.getId());
             if (isNull(youTubeTrailerData) || youTubeTrailerData.getVideoUrl().isEmpty()) {
                 sendTrailerNotFoundMessage(chatId, movieTitle);
             } else sendTrailerInfo(chatId, youTubeTrailerData);
