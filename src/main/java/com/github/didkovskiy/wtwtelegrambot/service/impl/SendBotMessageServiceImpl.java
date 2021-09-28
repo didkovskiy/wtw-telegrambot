@@ -2,6 +2,7 @@ package com.github.didkovskiy.wtwtelegrambot.service.impl;
 
 import com.github.didkovskiy.wtwtelegrambot.bot.WhatToWatchTelegramBot;
 import com.github.didkovskiy.wtwtelegrambot.service.SendBotMessageService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
@@ -11,6 +12,7 @@ import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
  * Implementation of {@link SendBotMessageService} interface.
  */
 @Service
+@Slf4j
 public class SendBotMessageServiceImpl implements SendBotMessageService {
 
     private final WhatToWatchTelegramBot wtwtelegrambot;
@@ -30,8 +32,7 @@ public class SendBotMessageServiceImpl implements SendBotMessageService {
         try {
             wtwtelegrambot.execute(sendMessage);
         } catch (TelegramApiException e) {
-            //todo add logging to the project.
-            e.printStackTrace();
+            log.error(e.getMessage());
         }
     }
 }

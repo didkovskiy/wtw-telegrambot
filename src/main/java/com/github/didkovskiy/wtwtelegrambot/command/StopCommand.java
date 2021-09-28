@@ -12,7 +12,7 @@ public class StopCommand implements Command {
     private final SendBotMessageService sendBotMessageService;
     private final TelegramUserService telegramUserService;
 
-    public static final String STOP_MESSAGE = "Your 'WatchLater' list was cleared \uD83D\uDE3F.";
+    public static final String STOP_MESSAGE = "bye!\uD83D\uDC4B";
 
     public StopCommand(SendBotMessageService sendBotMessageService, TelegramUserService telegramUserService) {
         this.sendBotMessageService = sendBotMessageService;

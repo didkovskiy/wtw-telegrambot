@@ -21,7 +21,8 @@ public class HelpCommand implements Command {
                     + "<b>WatchLater list access:</b>\n"
                     + "%s + 'movie title' - save movie to the WatchLater list \uD83D\uDCCC \n"
                     + "%s - see WatchLater list \uD83D\uDD59 \n"
-                    + "%s - remove movie from WatchLater list ✖️\n\n"
+                    + "%s - remove movie from WatchLater list ✖️\n"
+                    + "%s - clear the WatchLater list \uD83E\uDDF9 \n\n"
 
                     + "<b>Search a random movie:</b>\n"
                     + "%s - get a completely random movie from most popular \uD83D\uDC8E \n"
@@ -40,6 +41,7 @@ public class HelpCommand implements Command {
             WATCH_LATER.getCommandName(),
             WATCH_LATER.getCommandName(),
             REMOVE_WATCH_LATER.getCommandName(),
+            CLEAR_WATCH_LATER.getCommandName(),
 
             RANDOM.getCommandName(),
             RANDOM.getCommandName(),
