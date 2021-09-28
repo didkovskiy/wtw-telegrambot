@@ -20,16 +20,16 @@ I'm here to help you to find a movie to watch or at least to steer you in the ri
 
 /random command allows you to search a movie or get it by random: 
 
-<img alt="logo" height="220" src="https://github.com/didkovskiy/wtw-telegrambot/blob/main/docs/random.gif" width=auto/>
-<img alt="logo" height="220" src="https://github.com/didkovskiy/wtw-telegrambot/blob/main/docs/randomkey.gif" width=auto/>
+<img alt="logo" height="240" src="https://github.com/didkovskiy/wtw-telegrambot/blob/main/docs/random.gif" width=auto/>
+<img alt="logo" height="280" src="https://github.com/didkovskiy/wtw-telegrambot/blob/main/docs/randomkey.gif" width=auto/>
 
 Finding a movie trailer is easy:
 
-<img alt="logo" height="220" src="https://github.com/didkovskiy/wtw-telegrambot/blob/main/docs/trailer.gif" width=auto/>
+<img alt="logo" height="290" src="https://github.com/didkovskiy/wtw-telegrambot/blob/main/docs/trailer.gif" width=auto/>
 
 Statistics available only to admins:
 
-<img alt="logo" height="220" src="https://github.com/didkovskiy/wtw-telegrambot/blob/main/docs/stat.gif" width=auto/>
+<img alt="logo" height="290" src="https://github.com/didkovskiy/wtw-telegrambot/blob/main/docs/stat.gif" width=auto/>
 
 ## Deployment (not available now)
 Required software:
