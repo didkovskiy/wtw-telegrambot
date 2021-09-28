@@ -2,6 +2,7 @@ package com.github.didkovskiy.wtwtelegrambot.bot;
 
 import com.github.didkovskiy.wtwtelegrambot.client.IMDbMovieClient;
 import com.github.didkovskiy.wtwtelegrambot.command.CommandContainer;
+import com.github.didkovskiy.wtwtelegrambot.service.StatisticsService;
 import com.github.didkovskiy.wtwtelegrambot.service.WatchLaterService;
 import com.github.didkovskiy.wtwtelegrambot.service.impl.SendBotMessageServiceImpl;
 import com.github.didkovskiy.wtwtelegrambot.service.TelegramUserService;
@@ -9,6 +10,8 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import org.telegram.telegrambots.bots.TelegramLongPollingBot;
 import org.telegram.telegrambots.meta.api.objects.Update;
+
+import java.util.List;
 
 import static com.github.didkovskiy.wtwtelegrambot.command.CommandName.NO;
 import static org.apache.commons.lang3.StringUtils.SPACE;
@@ -31,11 +34,15 @@ public class WhatToWatchTelegramBot extends TelegramLongPollingBot {
 
     public WhatToWatchTelegramBot(TelegramUserService telegramUserService,
                                   WatchLaterService watchLaterService,
-                                  IMDbMovieClient imDbMovieClient) {
+                                  IMDbMovieClient imDbMovieClient,
+                                  StatisticsService statisticsService,
+                                  @Value("#{'${bot.admins}'.split(',')}") List<String> admins) {
         this.commandContainer = new CommandContainer(new SendBotMessageServiceImpl(this),
                 telegramUserService,
                 watchLaterService,
-                imDbMovieClient);
+                imDbMovieClient,
+                statisticsService,
+                admins);
     }
 
     @Override
@@ -50,13 +57,14 @@ public class WhatToWatchTelegramBot extends TelegramLongPollingBot {
 
     @Override
     public void onUpdateReceived(Update update) {
+        String username = update.getMessage().getFrom().getUserName();
         if (update.hasMessage() && update.getMessage().hasText()) {
             String message = update.getMessage().getText().trim();
             if (message.startsWith(COMMAND_PREFIX)) {
                 String commandIdentifier = message.split(SPACE)[0].toLowerCase();
-                commandContainer.retrieveCommand(commandIdentifier).execute(update);
+                commandContainer.retrieveCommand(commandIdentifier, username).execute(update);
             } else {
-                commandContainer.retrieveCommand(NO.getCommandName()).execute(update);
+                commandContainer.retrieveCommand(NO.getCommandName(), username).execute(update);
             }
         }
     }

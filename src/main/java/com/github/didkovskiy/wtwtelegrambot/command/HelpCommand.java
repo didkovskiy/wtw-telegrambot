@@ -32,7 +32,7 @@ public class HelpCommand implements Command {
                     + "%s + 'movie title' - find the trailer for this movie \uD83C\uDF9E \n\n"
 
                     + "<b>Other:</b>\n"
-                    + "%s - get statistic about active users \uD83D\uDDD2\n"
+                    + "%s - get statistic(only for admins) \uD83D\uDDD2\n"
                     + "%s - get help about working with me \uD83D\uDC4B\n",
 
             START.getCommandName(),

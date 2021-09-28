@@ -2,8 +2,8 @@ package com.github.didkovskiy.wtwtelegrambot.command;
 
 import com.github.didkovskiy.wtwtelegrambot.bot.WhatToWatchTelegramBot;
 import com.github.didkovskiy.wtwtelegrambot.service.SendBotMessageService;
-import com.github.didkovskiy.wtwtelegrambot.service.impl.SendBotMessageServiceImpl;
 import com.github.didkovskiy.wtwtelegrambot.service.TelegramUserService;
+import com.github.didkovskiy.wtwtelegrambot.service.impl.SendBotMessageServiceImpl;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
