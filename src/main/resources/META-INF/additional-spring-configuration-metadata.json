@@ -19,6 +19,11 @@
       "name": "api.key",
       "type": "java.lang.String",
       "description": "Description for api.key."
+    },
+    {
+      "name": "bot.admins",
+      "type": "java.lang.String",
+      "description": "Description for bot.admins."
     }
   ]
 }

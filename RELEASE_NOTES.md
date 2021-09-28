@@ -1,17 +1,21 @@
 # Release Notes
 
+## 0.9.0-SNAPSHOT
+
+* WTWTB-10: Added extended bot statistics for admins.
+* WTWTB-7: Added /clear command.
+
 ## 0.8.0-SNAPSHOT
 
 * WTWTB-9: Added ability to get a trailer of a specific movie.
 
 ## 0.7.0-SNAPSHOT
 
-* WTWTB-8: Added ability to get a random movie from 
-most popular movies or by typing keywords.
+* WTWTB-8: Added ability to get a random movie from most popular movies or by typing keywords.
 
 ## 0.6.0-SNAPSHOT
 
-* WTWTB-6: Added ability to remove movies from 'Watch Later' list. 
+* WTWTB-6: Added ability to remove movies from 'Watch Later' list.
 
 ## 0.5.0-SNAPSHOT
 

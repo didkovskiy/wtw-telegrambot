@@ -43,6 +43,10 @@ public class WatchLater {
         users.add(user);
     }
 
+    public int getUsersCount(){
+        return users.size();
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
