@@ -41,13 +41,13 @@ public class RemoveWatchLaterCommand implements Command {
         }
         String watchLaterMovieNumber = getMessage(update).split(SPACE)[1];
         String chatId = getChatId(update);
-        if (isNumeric(watchLaterMovieNumber)) {
+        if (isNumeric(watchLaterMovieNumber) && Integer.parseInt(watchLaterMovieNumber) != 0) {
             TelegramUser telegramUser = telegramUserService.findByChatId(chatId).orElseThrow(NotFoundException::new);
             if (telegramUser.getWatchLaterList().size() < Integer.parseInt(watchLaterMovieNumber)) {
                 sendWatchLaterNotFound(chatId, watchLaterMovieNumber);
                 return;
             }
-            String watchLaterId = telegramUser.getWatchLaterList().get(Integer.parseInt(watchLaterMovieNumber)).getId();
+            String watchLaterId = telegramUser.getWatchLaterList().get(Integer.parseInt(watchLaterMovieNumber) - 1).getId();
             Optional<WatchLater> watchLaterOptional = watchLaterService.findById(watchLaterId);
             if (watchLaterOptional.isPresent()) {
                 WatchLater watchLater = watchLaterOptional.get();
@@ -58,7 +58,7 @@ public class RemoveWatchLaterCommand implements Command {
                 sendWatchLaterNotFound(chatId, watchLaterMovieNumber);
             }
         } else {
-            sendBotMessageService.sendMessage(chatId, "Enter a positive integer.");
+            sendBotMessageService.sendMessage(chatId, "Enter a positive integer > 0.");
         }
     }
 
@@ -70,7 +70,7 @@ public class RemoveWatchLaterCommand implements Command {
         } else {
             StringBuilder sb = new StringBuilder("After /remove please type a number of a movie in the list: \n\n");
             for (int i = 0; i < watchLaterList.size(); i++) {
-                sb.append(String.format(i + "\n" +
+                sb.append(String.format((i + 1) + "\n" +
                                 "<b>Title:</b> %s\n" + "<b>Description:</b> %s\n\n",
                         watchLaterList.get(i).getTitle(), watchLaterList.get(i).getDescription()));
             }
