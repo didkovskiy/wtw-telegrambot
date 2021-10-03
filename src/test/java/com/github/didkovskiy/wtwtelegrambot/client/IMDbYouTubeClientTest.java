@@ -20,7 +20,7 @@ class IMDbYouTubeClientTest {
     private final IMDbYouTubeClient youTubeClient = new IMDbYouTubeClientImpl(imdbApiPath, apiKey);
 
     @Test
-    public void shouldProperlyReturnRightMovieTrailer() {
+    public void shouldReturnRightMovieTrailer() {
         //given
         String imdbIdOfMovie = "tt1375666";
 

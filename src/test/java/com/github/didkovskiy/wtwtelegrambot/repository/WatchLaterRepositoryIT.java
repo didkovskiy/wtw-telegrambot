@@ -27,7 +27,7 @@ class WatchLaterRepositoryIT {
 
     @Sql(scripts = {"/sql/clearDbs.sql", "/sql/fiveWatchLaterRecordsForUser.sql"})
     @Test
-    public void shouldProperlyGetAllUsersForWatchLater(){
+    public void shouldGetAllUsersForWatchLater(){
         //when
         Optional<WatchLater> watchLaterRecordFromDB = watchLaterRepository.findById(("id1"));
 

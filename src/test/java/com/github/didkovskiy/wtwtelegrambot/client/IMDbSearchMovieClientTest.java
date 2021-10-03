@@ -19,7 +19,7 @@ class IMDbSearchMovieClientTest {
     private final IMDbSearchMovieClient movieClient = new IMDbSearchMovieClientImpl(imdbApiPath, apiKey);
 
     @Test
-    public void shouldProperlyReturnEmptyResultList() {
+    public void shouldReturnEmptyResultList() {
         //given
         String query = "74t1kk4r3wehlku34bjb";
 
@@ -31,7 +31,7 @@ class IMDbSearchMovieClientTest {
     }
 
     @Test
-    public void shouldProperlyReturnMovieTitle() {
+    public void shouldReturnMovieTitle() {
         //given
         String query = "Matrix";
 
@@ -45,7 +45,7 @@ class IMDbSearchMovieClientTest {
     }
 
     @Test
-    public void shouldProperlyContainNonEmptyResult() {
+    public void shouldContainNonEmptyResult() {
         //given
         String query = "sex drugs alcohol";
 

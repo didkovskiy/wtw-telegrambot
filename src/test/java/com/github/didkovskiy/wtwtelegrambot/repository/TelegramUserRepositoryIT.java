@@ -27,7 +27,7 @@ public class TelegramUserRepositoryIT {
 
     @Sql(scripts = {"/sql/clearDbs.sql", "/sql/telegram_users.sql"})
     @Test
-    public void shouldProperlyFindAllActiveUsers() {
+    public void shouldFindAllActiveUsers() {
         //when
         List<TelegramUser> users = telegramUserRepository.findAllByActiveTrue();
 
@@ -37,7 +37,7 @@ public class TelegramUserRepositoryIT {
 
     @Sql(scripts = {"/sql/clearDbs.sql"})
     @Test
-    public void shouldProperlySaveTelegramUser() {
+    public void shouldSaveTelegramUser() {
         //given
         TelegramUser telegramUser = new TelegramUser();
         telegramUser.setChatId("1234567890");
@@ -54,7 +54,7 @@ public class TelegramUserRepositoryIT {
 
     @Sql(scripts = {"/sql/clearDbs.sql", "/sql/fiveWatchLaterRecordsForUser.sql"})
     @Test
-    public void shouldProperlyGetAllWatchLaterRecordsForUser() {
+    public void shouldGetAllWatchLaterRecordsForUser() {
         //when
         Optional<TelegramUser> userFromDB = telegramUserRepository.findById("1");
 

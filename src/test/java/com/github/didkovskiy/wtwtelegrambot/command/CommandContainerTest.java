@@ -3,6 +3,7 @@ package com.github.didkovskiy.wtwtelegrambot.command;
 import com.github.didkovskiy.wtwtelegrambot.client.IMDbMostPopularDataClient;
 import com.github.didkovskiy.wtwtelegrambot.client.IMDbSearchMovieClient;
 import com.github.didkovskiy.wtwtelegrambot.client.IMDbYouTubeClient;
+import com.github.didkovskiy.wtwtelegrambot.command.annotation.AdminCommand;
 import com.github.didkovskiy.wtwtelegrambot.service.SendBotMessageService;
 import com.github.didkovskiy.wtwtelegrambot.service.StatisticsService;
 import com.github.didkovskiy.wtwtelegrambot.service.TelegramUserService;
@@ -15,6 +16,7 @@ import org.mockito.Mockito;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @DisplayName("Unit-level testing for CommandContainer")
 class CommandContainerTest {
@@ -70,5 +72,23 @@ class CommandContainerTest {
 
         //then
         assertEquals(UnknownCommand.class, command.getClass());
+    }
+
+    @Test
+    public void shouldReturnAdminCommand(){
+        //when
+        Command adminCommand = commandContainer.retrieveCommand("/stat", "admin");
+
+        //then
+        assertTrue(adminCommand.getClass().isAnnotationPresent(AdminCommand.class));
+    }
+
+    @Test
+    public void shouldReturnUnknownCommandForGeneralUsers(){
+        //when
+        Command adminCommand = commandContainer.retrieveCommand("/stat", "Vasya");
+
+        //then
+        assertEquals(UnknownCommand.class, adminCommand.getClass());
     }
 }

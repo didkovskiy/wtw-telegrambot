@@ -35,7 +35,7 @@ class WatchLaterServiceTest {
     }
 
     @Test
-    public void shouldProperlySaveNewWatchLater(){
+    public void shouldSaveNewWatchLater(){
         //given
         SearchResult searchResult = new SearchResult();
         searchResult.setId("id1");
