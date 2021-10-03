@@ -6,7 +6,7 @@
         <setting name="validation-enabled" value="true" />
         <setting name="provider-name" value="Hibernate" />
         <datasource-mapping>
-          <factory-entry name="entityManagerFactory" value="7018d1e0-ccd7-4991-8952-2de0309c0507" />
+          <factory-entry name="entityManagerFactory" value="1069704c-bd14-445b-887a-664c09996ce0" />
           <factory-entry name="wtw-telegrambot" value="0a8dfd33-5086-4677-9c2b-2239275b110c" />
         </datasource-mapping>
         <naming-strategy-map />

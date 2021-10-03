@@ -31,7 +31,7 @@ Statistics available only to admins:
 
 <img alt="logo" height="340" src="https://github.com/didkovskiy/wtw-telegrambot/blob/main/docs/stat.gif" width=auto/>
 
-## Deployment (not available now)
+## Deployment 
 Required software:
 - terminal for running bash scripts
 - docker
@@ -39,7 +39,7 @@ Required software:
 
 Run bash script to deploy application:
 
-`$ bash start.sh ${bot_username} ${bot_token}`
+`$ bash start.sh ${bot_username} ${bot_token} ${api_key}`
 
 ## Technologies used
 - [Spring Boot](https://spring.io/projects/spring-boot) 2.5.4 as a skeleton framework

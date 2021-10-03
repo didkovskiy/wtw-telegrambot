@@ -2,19 +2,23 @@ version: '3.1'
 
 services:
   wtwtb-bot:
-    depends_on:
-      - wtwtb-db
     build:
       context: .
+    depends_on:
+      - wtwtb-db
     environment:
-      BOT_NAME: ${BOT_NAME}
+      BOT_USERNAME: ${BOT_USERNAME}
       BOT_TOKEN: ${BOT_TOKEN}
-      BOT_DB_USERNAME: ${BOT_DB_USERNAME}
-      BOT_DB_PASSWORD: ${BOT_DB_PASSWORD}
+      API_KEY: ${API_KEY}
+      SPRING_DATASOURCE_URL: 'jdbc:mysql://host.docker.internal:3306/wtwtb_db'
+      SPRING_DATASOURCE_USERNAME: ${BOT_DB_USERNAME}
+      SPRING_DATASOURCE_PASSWORD: ${BOT_DB_PASSWORD}
+      SPRING_JPA_DATABASE-PLATFORM: 'org.hibernate.dialect.MySQL5InnoDBDialect'
+      SPRING_FLYWAY_SCHEMAS: 'wtwtb_db'
+      SPRING_FLYWAY_ENABLED: 'true'
     restart: always
   wtwtb-db:
     image: mysql:5.7
-    restart: always
     environment:
       MYSQL_USER: ${BOT_DB_USERNAME}
       MYSQL_PASSWORD: ${BOT_DB_PASSWORD}
